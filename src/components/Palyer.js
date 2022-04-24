@@ -6,6 +6,8 @@ import {
   faAngleLeft,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
+// utils
+import { playAudio } from '../util';
 
 function Palyer({
   currentSong,
@@ -60,6 +62,7 @@ function Palyer({
         setCurrentSong(songs[(currentIndex - 1) % songs.length]);
       }
     }
+    playAudio(isPlaying, audioRef);
   };
 
   return (
