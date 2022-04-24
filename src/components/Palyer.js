@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlay,
@@ -16,7 +16,19 @@ function Palyer({
   songInfo,
   songs,
   setCurrentSong,
+  setSongs,
 }) {
+  // useEffect
+  useEffect(() => {
+    const newSongs = songs.map((state) => {
+      if (state.id === currentSong.id) {
+        return { ...state, active: true };
+      } else {
+        return { ...state, active: false };
+      }
+    });
+    setSongs(newSongs);
+  }, [currentSong]);
   // Event Handlers
   const playSongHandler = () => {
     if (isPlaying) {
