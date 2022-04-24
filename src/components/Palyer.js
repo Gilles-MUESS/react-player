@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlay,
@@ -7,9 +7,14 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-function Palyer({ currentSong, isPlaying, setIsPlaying }) {
-  // References
-  const audioRef = useRef(null);
+function Palyer({
+  currentSong,
+  isPlaying,
+  setIsPlaying,
+  audioRef,
+  setSongInfo,
+  songInfo,
+}) {
   // Event Handlers
   const playSongHandler = () => {
     if (isPlaying) {
@@ -20,11 +25,7 @@ function Palyer({ currentSong, isPlaying, setIsPlaying }) {
       setIsPlaying(!isPlaying);
     }
   };
-  const timeUpdateHandler = (e) => {
-    const currentTime = e.target.currentTime;
-    const duration = e.target.duration;
-    setSongInfo({ ...songInfo, currentTime, duration });
-  };
+
   const getTime = (time) => {
     return (
       Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
@@ -36,10 +37,6 @@ function Palyer({ currentSong, isPlaying, setIsPlaying }) {
     setSongInfo({ ...songInfo, currentTime });
   };
   //State
-  const [songInfo, setSongInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-  });
 
   return (
     <div className='player'>
@@ -68,12 +65,6 @@ function Palyer({ currentSong, isPlaying, setIsPlaying }) {
           size='2x'
         />
       </div>
-      <audio
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-        ref={audioRef}
-        src={currentSong.audio}
-      ></audio>
     </div>
   );
 }
