@@ -8,5 +8,15 @@ h1, h2, h3 {
   color: rgba(40,40,40, 1.0)
 }
 
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h3, h4 {
+  font-weight: 700;
+  color: rgba(100, 100 ,100 , 1.0);
+}
+
 @import './player';
 @import './song';
+@import './library';
