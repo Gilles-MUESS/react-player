@@ -9,11 +9,43 @@
 .time-control {
   width: 50%;
   display: flex;
+  align-items: center;
+
+  .track {
+    width: 100%;
+    height: 1rem;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: blue;
+  }
+
+  .animate-track {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(0%);
+    pointer-events: none;
+    background-color: lightgray;
+  }
 
   input {
     width: 100%;
-    padding: 1rem 0; // risque de soucis pour déplacer le selecteur
-    margin: 0 1rem;
+   -webkit-appearance: none;
+   background: transparent;
+   cursor: pointer;
+
+   &:focus{
+     outline: none;
+   }
+
+   &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+   }
   }
   
   p {
