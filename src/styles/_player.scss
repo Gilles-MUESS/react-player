@@ -46,6 +46,12 @@
     width: 16px;
     height: 16px;
    }
+
+   &::-moz-range-thumb {
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+   }
   }
   
   p {
