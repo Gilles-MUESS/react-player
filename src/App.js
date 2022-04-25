@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 // Components
 import Player from './components/Palyer';
 import Song from './components/Song';
@@ -22,6 +22,10 @@ function App() {
     animationPercentage: 0,
   });
   const [libraryStatus, setLibraryStatus] = useState(false);
+  // useEffect to make play the
+  useEffect(() => {
+    if (isPlaying) audioRef.current.play();
+  }, [currentSong]);
   // Handlers
   const timeUpdateHandler = (e) => {
     const currentTime = e.target.currentTime;
@@ -33,9 +37,13 @@ function App() {
     );
     setSongInfo({ ...songInfo, currentTime, duration, animationPercentage });
   };
+  const songEndHandler = async () => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+  };
 
   return (
-    <div className='App'>
+    <div className={`App ${libraryStatus ? 'library-active' : ''}`}>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} />
       <Player
@@ -62,6 +70,7 @@ function App() {
         onLoadedMetadata={timeUpdateHandler}
         ref={audioRef}
         src={currentSong.audio}
+        onEnded={songEndHandler}
       ></audio>
     </div>
   );
