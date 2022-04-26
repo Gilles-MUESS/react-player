@@ -10,6 +10,22 @@
     border-radius: 50%;
   }
 
+  img.is-active {
+    animation: spin 10s infinite linear;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   h2 {
     padding: 3rem 1rem 1rem;
   }
