@@ -4,7 +4,7 @@ nav {
   justify-content: space-around;
   align-items: center;
 
-  .nav-buttons{
+  .nav-buttons {
     button {
       background-color: transparent;
       color: $dark-gray;
@@ -13,7 +13,7 @@ nav {
       border: 2px solid $dark-gray;
       padding: 0.5rem;
       transition: all 0.24s ease-in-out;
-      
+
       &:hover {
         background: $dark-gray;
         color: $white;
@@ -28,10 +28,11 @@ nav {
   }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   nav {
-    button {
-      z-index: 10;
+    .nav-buttons {
+      position: relative;
+      z-index: 50;
     }
   }
 }
