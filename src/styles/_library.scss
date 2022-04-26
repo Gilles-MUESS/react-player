@@ -8,7 +8,7 @@
   overflow: scroll;
   transform: translateX(-100%);
   opacity: 0;
-  background-color: white;
+  background-color: $white;
   transition: all 0.5s ease-out;
 
   h2 {
@@ -76,5 +76,22 @@
 @media screen and (max-width: 768px){
   .library {
     width: 100%;
+  }
+}
+
+.dark-mode-enabled {
+  .library {
+    box-shadow: 2px 2px 50px rgb(16, 16, 16);
+  }
+  .library-song:hover {
+    background-color: rgba(152, 59, 177, 0.3);
+  }
+  
+  .selected {
+    background-color: rgb(106, 78, 114);
+  
+    &:hover {
+      background-color: rgba(149, 108, 160, 0.6);
+    }
   }
 }

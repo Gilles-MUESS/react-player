@@ -1,3 +1,27 @@
+$primary-color: white;
+$secondary-color: rgba(65,65,65,1);
+$third-color: rgba(100, 100 ,100 , 1.0);
+$fourth-color: rgba(200, 200 ,200 , 1.0);
+$white: var(--primary-color);
+$dark-gray: var(--secondary-color);
+$middle-gray: var(--third-color);
+$light-gray: var(--fourth-color);
+
+.App {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --third-color: #{$third-color};
+  --fourth-color: #{$fourth-color};
+}
+
+.App.dark-mode-enabled {
+  --primary-color: #{$secondary-color};
+  --secondary-color: #{$primary-color};
+  --third-color: #{$fourth-color};
+  --fourth-color: #{$third-color};
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +29,7 @@
 }
 
 h1, h2, h3 {
-  color: rgba(40,40,40, 1.0)
+  color: $dark-gray;
 }
 
 body {
@@ -14,15 +38,17 @@ body {
 
 h3, h4 {
   font-weight: 700;
-  color: rgba(100, 100 ,100 , 1.0);
+  color: $middle-gray;
 }
 
 .App {
+  min-height: 100vh;
+  background-color: $white;
   transition: all 0.5s ease;
 }
 
 .library-active {
-  margin-left: 30%;
+  margin-left: 20rem;
 }
 
 @media screen and (max-width: 768px){

@@ -12,7 +12,7 @@ import data from './data';
 function App() {
   // References
   const audioRef = useRef(null);
-  // State
+  // States
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,6 +22,7 @@ function App() {
     animationPercentage: 0,
   });
   const [libraryStatus, setLibraryStatus] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   // useEffect to make play the
   useEffect(() => {
     if (isPlaying) audioRef.current.play();
@@ -43,8 +44,17 @@ function App() {
   };
 
   return (
-    <div className={`App ${libraryStatus ? 'library-active' : ''}`}>
-      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
+    <div
+      className={`App ${libraryStatus ? 'library-active' : ''} ${
+        isDarkMode ? 'dark-mode-enabled' : ''
+      }`}
+    >
+      <Nav
+        libraryStatus={libraryStatus}
+        setLibraryStatus={setLibraryStatus}
+        isDarkMode={isDarkMode}
+        setIsDarkMode={setIsDarkMode}
+      />
       <Song currentSong={currentSong} isPlaying={isPlaying} />
       <Player
         currentSong={currentSong}

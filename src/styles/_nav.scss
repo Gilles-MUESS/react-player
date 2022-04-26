@@ -4,17 +4,26 @@ nav {
   justify-content: space-around;
   align-items: center;
 
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    border: 2px solid rgba(65,65,65,1);
-    padding: 0.5rem;
-    transition: all 0.24s ease-in-out;
-
-    &:hover {
-      background: rgba(65,65,65,1);
-      color: white;
+  .nav-buttons{
+    button {
+      background-color: transparent;
+      color: $dark-gray;
+      border: none;
+      cursor: pointer;
+      border: 2px solid $dark-gray;
+      padding: 0.5rem;
+      transition: all 0.24s ease-in-out;
+      
+      &:hover {
+        background: $dark-gray;
+        color: $white;
+      }
+    }
+    button.dark-mode {
+      margin-left: 1rem;
+      border-radius: 50%;
+      background-color: $dark-gray;
+      color: $white;
     }
   }
 }
